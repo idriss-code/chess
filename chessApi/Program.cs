@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ChessApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,8 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 //in memory database
-//builder.Services.AddDbContext<TodoContext>(opt =>
-//    opt.UseInMemoryDatabase("TodoList"));
+builder.Services.AddDbContext<ChessDbContext>(opt =>
+    opt.UseInMemoryDatabase("chess"));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
