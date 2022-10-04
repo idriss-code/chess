@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ChessApi.model;
+using chessApi.model;
 
 
-namespace ChessApi
+namespace chessApi
 {
     public class ChessDbContext : DbContext
     {

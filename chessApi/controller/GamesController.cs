@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ChessApi;
-using ChessApi.model;
+using chessApi;
+using chessApi.model;
 
-namespace ChessApi.controller
+namespace chessApi.controller
 {
     [Route("api/[controller]")]
     [ApiController]

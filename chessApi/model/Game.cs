@@ -1,4 +1,4 @@
-﻿namespace ChessApi.model
+﻿namespace chessApi.model
 {
     public class Game
     {

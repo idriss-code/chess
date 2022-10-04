@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ChessApi;
+using chessApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
