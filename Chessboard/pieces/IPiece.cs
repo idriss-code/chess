@@ -8,6 +8,9 @@ namespace chessboard.pieces
 {
     public interface IPiece
     {
-        string name { get; }
+        string Name { get; }
+
+        string Row { get; }
+        string Collumn { get; }
     }
 }

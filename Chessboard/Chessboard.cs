@@ -4,9 +4,16 @@ namespace chessboard
 {
     public class Chessboard
     {
-        public IPiece GetSquare(string collumn, string row)
+        List<IPiece> pieces = new List<IPiece>();
+
+        public IPiece? GetSquare(string collumn, string row)
         {
-            return null;
+            return pieces.Find(x => x.Row == row && x.Collumn == collumn);
+        }
+
+        public void NewGame()
+        {
+            pieces.Add(new King("e", "1"));
         }
 
     }

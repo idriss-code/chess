@@ -18,8 +18,9 @@ namespace chessboardTest
         public void GameCreation()
         {
             var chessboard = new Chessboard();
+            chessboard.NewGame();
             var king = chessboard.GetSquare("e", "1");
-            Assert.IsTrue(king.GetType().IsInstanceOfType(typeof(King)));
+            Assert.IsTrue(king is King);
         }
     }
 }

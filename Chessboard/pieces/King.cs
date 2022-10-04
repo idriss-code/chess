@@ -8,6 +8,24 @@ namespace chessboard.pieces
 {
     public class King : IPiece
     {
-        public string name { get => "King"; }
+
+
+        public King()
+        {
+            Row = "a";
+            Collumn = "1";
+        }
+
+        public King(string collumn, string row)
+        {
+            Row = row;
+            Collumn = collumn;
+        }
+
+
+        public string Name { get => "King"; }
+
+        public string Row { get; }
+        public string Collumn { get; }
     }
 }

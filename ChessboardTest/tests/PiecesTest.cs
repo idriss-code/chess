@@ -11,7 +11,7 @@ namespace chessboardTest
         {
             var king = new King();
             Assert.IsNotNull(king);
-            Assert.AreEqual(king.name, "King");
+            Assert.AreEqual(king.Name, "King");
         }
     }
 }
