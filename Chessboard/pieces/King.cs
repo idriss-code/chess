@@ -12,8 +12,8 @@ namespace chessboard.pieces
 
         public King()
         {
-            Row = "a";
-            Collumn = "1";
+            Row = "";
+            Collumn = "";
         }
 
         public King(string collumn, string row)
