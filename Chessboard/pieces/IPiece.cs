@@ -12,5 +12,7 @@ namespace chessboard.pieces
 
         string Row { get; }
         string Collumn { get; }
+
+        List<Square> AvailableMove { get; }
     }
 }

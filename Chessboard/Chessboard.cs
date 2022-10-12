@@ -7,8 +7,8 @@ namespace chessboard
     {
         readonly List<IPiece> pieces = new List<IPiece>();
 
-        static readonly string[] rows = { "1", "2", "3", "4", "5", "6", "7", "8" };
-        static readonly string[] collumns = { "a", "b", "c", "d", "e", "f", "g", "h" };
+        public static readonly string[] rows = { "1", "2", "3", "4", "5", "6", "7", "8" };
+        public static readonly string[] collumns = { "a", "b", "c", "d", "e", "f", "g", "h" };
 
         public IPiece? GetSquare(string collumn, string row)
         {
