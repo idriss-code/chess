@@ -15,7 +15,7 @@ namespace chessboard.pieces
 
         public enums.Color Color { get; }
 
-        public Chessboard Chessboard
+        public Chessboard? Chessboard
         {
             get;
             set;//todo on set qu'une fois nomalement
