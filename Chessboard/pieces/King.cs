@@ -28,18 +28,18 @@ namespace chessboard.pieces
         public string Row { get; }
         public string Collumn { get; }
 
+        private int RowIndex { get => Array.IndexOf(Chessboard.rows, this.Row); }
+        private int ColIndex { get => Array.IndexOf(Chessboard.collumns, this.Collumn); }
+
         public List<Square> AvailableMove { 
             get {
                 var moves = new List<Square>();
-
-                int RowIndex = Array.IndexOf(Chessboard.rows, this.Row);
-                int ColIndex = Array.IndexOf(Chessboard.collumns, this.Collumn);
 
                 for(int r = RowIndex - 1; r < RowIndex +2; r++)
                 {
                     for (int c = ColIndex - 1; c < ColIndex + 2; c++)
                     {
-                        if(c != ColIndex || r != RowIndex)
+                        if(IsNotOriginSquare(c, r) && IsOnchessBordad(c,r))
                         {
                             moves.Add(new Square(Chessboard.collumns[c], Chessboard.rows[r]));
                         }
@@ -48,6 +48,16 @@ namespace chessboard.pieces
 
                 return moves;
             }
+        }
+
+         static private bool IsOnchessBordad(int c, int r)
+        {
+            return c >= 0 && r >= 0 && c < Chessboard.collumns.Length && r < Chessboard.rows.Length;
+        }
+
+        private bool IsNotOriginSquare(int c, int r)
+        {
+            return c != ColIndex || r != RowIndex;
         }
     }
 }
