@@ -24,6 +24,7 @@ namespace chessboard
         {
             this.CheckSquare(piece);
             pieces.Add(piece);
+            piece.Chessboard = this;
         }
 
         private void CheckSquare(IPiece piece)

@@ -10,16 +10,18 @@ namespace chessboard.pieces
     {
 
 
-        public King()
+        public King(enums.Color color = enums.Color.White)
         {
             Row = "";
             Collumn = "";
+            Color = color;
         }
 
-        public King(string collumn, string row)
+        public King(string collumn, string row, enums.Color color = enums.Color.White)
         {
             Row = row;
             Collumn = collumn;
+            Color = color;
         }
 
 
@@ -27,6 +29,13 @@ namespace chessboard.pieces
 
         public string Row { get; }
         public string Collumn { get; }
+
+        public enums.Color Color { get; }
+
+        public Chessboard Chessboard { 
+            get;
+            set;//todo on set qu'une fois nomalement
+        }
 
         private int RowIndex { get => Array.IndexOf(Chessboard.rows, this.Row); }
         private int ColIndex { get => Array.IndexOf(Chessboard.collumns, this.Collumn); }
@@ -39,7 +48,7 @@ namespace chessboard.pieces
                 {
                     for (int c = ColIndex - 1; c < ColIndex + 2; c++)
                     {
-                        if(IsNotOriginSquare(c, r) && IsOnchessBordad(c,r))
+                        if(IsNotOriginSquare(c, r) && IsOnchessBordad(c,r) && IsEmptyOrOposite(c, r))
                         {
                             moves.Add(new Square(Chessboard.collumns[c], Chessboard.rows[r]));
                         }
@@ -58,6 +67,16 @@ namespace chessboard.pieces
         private bool IsNotOriginSquare(int c, int r)
         {
             return c != ColIndex || r != RowIndex;
+        }
+
+        private bool IsEmptyOrOposite(int c, int r)
+        {
+                IPiece? target = Chessboard.GetSquare(Chessboard.collumns[c], Chessboard.rows[r]);
+                if (target == null)
+                    return true;
+                if (target.Color != this.Color)
+                    return true;
+                return false;    
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using chessboard.pieces;
+using chessboard.enums;
 using chessboard;
 
 namespace chessboardTest
@@ -74,9 +75,10 @@ namespace chessboardTest
         {
             var chessboard = new Chessboard();
 
-            var king = new King("a", "1");
+            var king = new King("a", "1", Color.White);
             chessboard.AddPiece(king);
-            chessboard.AddPiece(new King("a", "2"));
+            chessboard.AddPiece(new King("a", "2", Color.White));
+            chessboard.AddPiece(new King("b", "1", Color.Black));
 
             Assert.IsTrue(king.AvailableMove.Count == 2);
 
