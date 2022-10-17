@@ -1,4 +1,5 @@
-﻿namespace chessboard.exceptions
+﻿
+namespace chessboard.exceptions
 {
     public class ChessBoardException : Exception
     {
