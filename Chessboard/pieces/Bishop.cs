@@ -16,8 +16,6 @@ namespace chessboard.pieces
             {
                 var moves = new List<Square>();
 
-                AddColumnMove(moves);
-
                 return moves;
             }
         }
