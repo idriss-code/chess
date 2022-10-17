@@ -6,7 +6,7 @@ using chessboard;
 namespace chessboardTest
 {
     [TestClass]
-    public class PiecesTest
+    public class KingTest
     {
         [TestMethod]
         public void KingCreation()
