@@ -46,5 +46,70 @@ namespace chessboard.pieces
                 return true;
             return false;
         }
+
+        protected bool IsEmpty(int c, int r)
+        {
+            IPiece? target = Chessboard?.GetSquare(Chessboard.collumns[c], Chessboard.rows[r]);
+            if (target == null)
+                return true;
+            return false;
+        }
+
+        protected void AddColumnMove(List<Square> moves)
+        {
+            for (int r = RowIndex + 1; r < RowIndex + maxMove; r++)
+            {
+                if (!AddSquareAndCheckToContinue(moves, ColIndex, r))
+                {
+                    break;
+                }
+            }
+
+            for (int r = RowIndex - 1; r > RowIndex - maxMove; r--)
+            {
+                if (!AddSquareAndCheckToContinue(moves, ColIndex, r))
+                {
+                    break;
+                }
+            }
+
+            for (int c = ColIndex + 1; c < ColIndex + maxMove; c++)
+            {
+                if (!AddSquareAndCheckToContinue(moves, c, RowIndex))
+                {
+                    break;
+                }
+            }
+
+            for (int c = ColIndex - 1; c > ColIndex - maxMove; c--)
+            {
+                if (!AddSquareAndCheckToContinue(moves, c, RowIndex))
+                {
+                    break;
+                }
+            }
+        }
+
+        protected bool AddSquareAndCheckToContinue(List<Square> moves, int c, int r)
+        {
+            if (IsOnchessBoard(c, r))
+            {
+                if (IsEmptyOrOposite(c, r))
+                {
+                    moves.Add(new Square(Chessboard.collumns[c], Chessboard.rows[r]));
+                }
+
+                if (!IsEmpty(c, r))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

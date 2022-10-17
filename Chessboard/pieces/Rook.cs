@@ -21,37 +21,7 @@ namespace chessboard.pieces
             {
                 var moves = new List<Square>();
 
-                for (int r = RowIndex + 1; r < RowIndex + maxMove; r++)
-                {
-                    if (IsNotOriginSquare(ColIndex, r) && IsOnchessBoard(ColIndex, r) && IsEmptyOrOposite(ColIndex, r))
-                    {
-                        moves.Add(new Square(Chessboard.collumns[ColIndex], Chessboard.rows[r]));
-                    }
-                }
-
-                for (int r = RowIndex - 1; r > RowIndex - maxMove; r--)
-                {
-                    if (IsNotOriginSquare(ColIndex, r) && IsOnchessBoard(ColIndex, r) && IsEmptyOrOposite(ColIndex, r))
-                    {
-                        moves.Add(new Square(Chessboard.collumns[ColIndex], Chessboard.rows[r]));
-                    }
-                }
-
-                for (int c = ColIndex + 1; c < ColIndex + maxMove; c++)
-                {
-                    if (IsNotOriginSquare(c, RowIndex) && IsOnchessBoard(c, RowIndex) && IsEmptyOrOposite(c, RowIndex))
-                    {
-                        moves.Add(new Square(Chessboard.collumns[c], Chessboard.rows[RowIndex]));
-                    }
-                }
-
-                for (int c = ColIndex - 1; c > ColIndex - maxMove; c--)
-                {
-                    if (IsNotOriginSquare(c, RowIndex) && IsOnchessBoard(c, RowIndex) && IsEmptyOrOposite(c, RowIndex))
-                    {
-                        moves.Add(new Square(Chessboard.collumns[c], Chessboard.rows[RowIndex]));
-                    }
-                }
+                AddColumnMove(moves);
 
                 return moves;
             }
