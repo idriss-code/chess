@@ -85,6 +85,43 @@ namespace chessboard.pieces
             }
         }
 
+
+
+        protected void AddDiagonalMove(List<Square> moves)
+        {
+            for (int r = RowIndex + 1, c = ColIndex + 1; r < RowIndex + maxMove && c < ColIndex + maxMove; r++, c++)
+            {
+                if (!AddSquareAndCheckToContinue(moves, c, r))
+                {
+                    break;
+                }
+            }
+
+            for (int r = RowIndex - 1, c = ColIndex + 1; r > RowIndex - maxMove && c < ColIndex + maxMove; r--, c++)
+            {
+                if (!AddSquareAndCheckToContinue(moves, c, r))
+                {
+                    break;
+                }
+            }
+
+            for (int r = RowIndex + 1, c = ColIndex - 1; r < RowIndex + maxMove && c > ColIndex - maxMove; r++, c--)
+            {
+                if (!AddSquareAndCheckToContinue(moves, c, r))
+                {
+                    break;
+                }
+            }
+
+            for (int r = RowIndex - 1, c = ColIndex - 1; r > RowIndex - maxMove && c > ColIndex - maxMove; r--, c--)
+            {
+                if (!AddSquareAndCheckToContinue(moves, c, r))
+                {
+                    break;
+                }
+            }
+        }
+
         protected bool AddSquareAndCheckToContinue(List<Square> moves, int c, int r)
         {
             if (IsOnchessBoard(c, r))

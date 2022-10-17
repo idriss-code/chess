@@ -16,6 +16,8 @@ namespace chessboard.pieces
             {
                 var moves = new List<Square>();
 
+                AddDiagonalMove(moves);
+
                 return moves;
             }
         }
