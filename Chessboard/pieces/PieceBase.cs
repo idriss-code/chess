@@ -42,6 +42,14 @@ namespace chessboard.pieces
             return false;
         }
 
+        protected bool IsOposite(int c, int r)
+        {
+            IPiece? target = Chessboard?.GetSquare(Chessboard.collumns[c], Chessboard.rows[r]);
+            if (target?.Color != this.Color)
+                return true;
+            return false;
+        }
+
         protected bool IsEmpty(int c, int r)
         {
             IPiece? target = Chessboard?.GetSquare(Chessboard.collumns[c], Chessboard.rows[r]);
@@ -84,8 +92,6 @@ namespace chessboard.pieces
                 }
             }
         }
-
-
 
         protected void AddDiagonalMove(List<Square> moves)
         {
