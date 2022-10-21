@@ -12,8 +12,10 @@ namespace chessboard.pieces
             Color = color;
         }
 
-        public string Row { get; }
-        public string Collumn { get; }
+        public virtual List<Square> AvailableMove { get => new(); }
+
+        public string Row { get; private set; }
+        public string Collumn { get; private set; }
 
         public enums.Color Color { get; }
 
@@ -148,6 +150,15 @@ namespace chessboard.pieces
             }
 
             return false;
+        }
+
+        public void Move(string c, string r)
+        {
+            if(this.AvailableMove.Contains(new Square(c, r)))
+            {
+                Row = r;
+                Collumn = c;
+            }
         }
     }
 }

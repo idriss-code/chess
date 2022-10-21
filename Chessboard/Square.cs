@@ -14,8 +14,8 @@ namespace chessboard
             Collumn = collumn;
         }
 
-        string Row { get; }
-        string Collumn { get; }
+        public string Row { get; }
+        public string Collumn { get; }
 
         bool IEquatable<Square>.Equals(Square? other)
         {

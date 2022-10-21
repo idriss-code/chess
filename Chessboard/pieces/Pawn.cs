@@ -11,7 +11,7 @@ namespace chessboard.pieces
 
         public string Name { get => "Pawn"; }
 
-        public List<Square> AvailableMove
+        public override List<Square> AvailableMove
         {
             get
             {

@@ -10,7 +10,7 @@ namespace chessboard.pieces
 
         public string Name { get => "King"; }
 
-        public List<Square> AvailableMove
+        public override List<Square> AvailableMove
         {
             get
             {
