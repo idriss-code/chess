@@ -1,6 +1,7 @@
 ﻿
 namespace chessboard.pieces
 {
+    // TODO special move Clasting
     public class King : PieceBase, IPiece
     {
         public King(enums.Color color = enums.Color.White) : base("", "", color) { }
