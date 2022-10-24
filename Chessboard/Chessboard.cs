@@ -1,4 +1,5 @@
-﻿using chessboard.exceptions;
+﻿using chessboard.enums;
+using chessboard.exceptions;
 using chessboard.pieces;
 
 namespace chessboard
@@ -17,7 +18,26 @@ namespace chessboard
 
         public void NewGame()
         {
-            this.AddPiece(new King("e", "1"));
+            AddPieces("1", Color.White);
+            AddPieces("8", Color.Black);
+
+            foreach (string col in collumns)
+            {
+                this.AddPiece(new Pawn(col, "2", Color.White));
+                this.AddPiece(new Pawn(col, "7", Color.Black));
+            }
+        }
+
+        private void AddPieces(string row, Color color)
+        {
+            this.AddPiece(new Rook("a", row, color));
+            this.AddPiece(new Knight("b", row, color));
+            this.AddPiece(new Bishop("c", row, color));
+            this.AddPiece(new Queen("d", row, color));
+            this.AddPiece(new King("e", row, color));
+            this.AddPiece(new Bishop("f", row, color));
+            this.AddPiece(new Knight("g", row, color));
+            this.AddPiece(new Rook("h", row, color));
         }
 
         public void AddPiece(IPiece piece)
