@@ -47,7 +47,9 @@ namespace chessboard.pieces
         protected bool IsOposite(int c, int r)
         {
             IPiece? target = Chessboard?.GetSquare(Chessboard.collumns[c], Chessboard.rows[r]);
-            if (target?.Color != this.Color)
+            if (target == null)
+                return false;
+            if (target.Color != this.Color)
                 return true;
             return false;
         }
