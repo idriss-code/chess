@@ -3,6 +3,7 @@ using chessboard.pieces;
 using chessboard.enums;
 using chessboard;
 using System.Linq;
+using chessboard.exceptions;
 
 namespace chessboardTest
 {
@@ -28,9 +29,9 @@ namespace chessboardTest
         public void PieceMove2()
         {
 
-            IPiece[] tab = { new King("d", "5"), new Queen("d", "5"), new Rook("d", "5"),new Bishop("d", "5"), new Pawn("d", "5") };
+            IPiece[] tab = { new King("d", "5"), new Queen("d", "5"), new Rook("d", "5"), new Bishop("d", "5"), new Pawn("d", "5") };
 
-            foreach(IPiece currentPiece in tab)
+            foreach (IPiece currentPiece in tab)
             {
                 var chessboard = new Chessboard();
 
@@ -45,6 +46,16 @@ namespace chessboardTest
                 piece = chessboard.GetSquare(s.Collumn, s.Row);
                 Assert.IsNotNull(piece);
             }
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ChessBoardException), "Invalid move")]
+        public void PieceMove3()
+        {
+            var chessboard = new Chessboard();
+            var king = new King("d", "5");
+            chessboard.AddPiece(king);
+            king.Move("d", "7");
         }
     }
 }

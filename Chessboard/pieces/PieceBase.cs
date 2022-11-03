@@ -1,4 +1,7 @@
 ﻿
+using chessboard.exceptions;
+using System.ComponentModel.Design;
+
 namespace chessboard.pieces
 {
     public abstract class PieceBase
@@ -160,6 +163,10 @@ namespace chessboard.pieces
             {
                 Row = r;
                 Collumn = c;
+            }
+            else
+            {
+                throw new ChessBoardException("Invalid move");
             }
         }
     }
