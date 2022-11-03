@@ -1,12 +1,16 @@
 ﻿using chessboard.enums;
 using chessboard.exceptions;
 using chessboard.pieces;
+using System.Collections.ObjectModel;
 
 namespace chessboard
 {
     public class Chessboard
     {
-        readonly List<IPiece> pieces = new List<IPiece>();
+        readonly List<IPiece> pieces = new();
+        readonly List<IPiece> removedPieces = new();
+
+        public ReadOnlyCollection<IPiece> RemovedPieces => removedPieces.AsReadOnly();
 
         public static readonly string[] rows = { "1", "2", "3", "4", "5", "6", "7", "8" };
         public static readonly string[] collumns = { "a", "b", "c", "d", "e", "f", "g", "h" };
@@ -58,6 +62,12 @@ namespace chessboard
             {
                 throw new ChessBoardException("2 pieces same square");
             }
+        }
+
+        public void Remove(IPiece piece)
+        {
+            pieces.Remove(piece);
+            removedPieces.Add(piece);
         }
     }
 }

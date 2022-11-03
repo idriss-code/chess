@@ -19,5 +19,7 @@ namespace chessboard.pieces
         List<Square> AvailableMove { get; }
 
         public void Move(string c, string r);
+
+        public void Kill();
     }
 }

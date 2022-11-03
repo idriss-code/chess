@@ -4,7 +4,7 @@ using System.ComponentModel.Design;
 
 namespace chessboard.pieces
 {
-    public abstract class PieceBase
+    public abstract class PieceBase:IPiece
     {
         protected static readonly int maxMove = 7;
 
@@ -16,6 +16,8 @@ namespace chessboard.pieces
         }
 
         public virtual List<Square> AvailableMove { get => new(); }
+
+        public virtual string Name { get => ""; }
 
         public string Row { get; private set; }
         public string Collumn { get; private set; }
@@ -161,6 +163,11 @@ namespace chessboard.pieces
         {
             if(this.AvailableMove.Contains(new Square(c, r)))
             {
+                var target = Chessboard?.GetSquare(c, r);
+                if (target != null)
+                {
+                    target.Kill();
+                }
                 Row = r;
                 Collumn = c;
             }
@@ -168,6 +175,14 @@ namespace chessboard.pieces
             {
                 throw new ChessBoardException("Invalid move");
             }
+        }
+
+        public void Kill()
+        {
+            Row = "";
+            Collumn = "";
+
+            Chessboard?.Remove(this);
         }
     }
 }
