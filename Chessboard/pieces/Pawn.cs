@@ -1,15 +1,18 @@
 ﻿
+using chessboard.enums;
+using System.Collections.Generic;
+
 namespace chessboard.pieces
 {
-    // TODO en Passant
     public class Pawn : PieceBase, IPiece
     {
         public Pawn(enums.Color color = enums.Color.White) : base("", "", color) { }
 
-
         public Pawn(string collumn, string row, enums.Color color = enums.Color.White) : base(collumn, row, color) { }
 
-        public string Name { get => "Pawn"; }
+        public override string Name { get => "Pawn"; }
+
+        private readonly List<Square> EnPassantMove = new();
 
         public override List<Square> AvailableMove
         {
@@ -24,7 +27,58 @@ namespace chessboard.pieces
                 }
                 AddCaptureMove(moves);
 
+                AddEnPassantMove(moves);
+
                 return moves;
+            }
+        }
+
+        public override void Move(string c, string r)
+        {
+            if (IsDoubleMove(c, r))
+            {
+                GiveEnPassantToOpositPawns();
+            }
+
+            base.Move(c, r);
+        }
+
+        private bool IsDoubleMove(string c, string r)
+        {
+            int start = Int16.Parse(Row);
+            int end = Int16.Parse(r);
+            int diff = Math.Abs(start - end);
+            return diff == 2;
+        }
+
+        public void AddEnPassant(string c, string r)
+        {
+            EnPassantMove.Add(new Square(c, r));
+        }
+
+        private void GiveEnPassantToOpositPawns()
+        {
+            int rowOpositPiece = this.Color == enums.Color.White ? RowIndex + 2 : RowIndex - 2;
+            int rowMoveToGive = this.Color == enums.Color.White ? RowIndex + 1 : RowIndex - 1;
+            int colOpositPiece1 = ColIndex - 1;
+            int colOpositPiece2 = ColIndex + 1;
+            if (colOpositPiece1 >= 0)
+            {
+                GiveEnPassantToOpositPawn(rowOpositPiece, colOpositPiece1, rowMoveToGive);
+            }
+
+            if (colOpositPiece2 <= Chessboard.collumns.Count())
+            {
+                GiveEnPassantToOpositPawn(rowOpositPiece, colOpositPiece2, rowMoveToGive);
+            }
+        }
+
+        private void GiveEnPassantToOpositPawn(int opositRow, int opositColumn, int rowMoveToGive)
+        {
+            IPiece? piece = Chessboard?.GetSquare(Chessboard.collumns[opositColumn], Chessboard.rows[opositRow]);
+            if (piece is Pawn && piece.Color != Color)
+            {
+                ((Pawn)piece).AddEnPassant(Chessboard.collumns[ColIndex], Chessboard.rows[rowMoveToGive]);
             }
         }
 
@@ -66,6 +120,11 @@ namespace chessboard.pieces
             {
                 moves.Add(new Square(Chessboard.collumns[c], Chessboard.rows[r]));
             }
+        }
+
+        private void AddEnPassantMove(List<Square> moves)
+        {
+            moves.AddRange(EnPassantMove);
         }
 
         private bool IsOnStartRow()

@@ -8,7 +8,7 @@ namespace chessboard.pieces
 
         public Bishop(string collumn, string row, enums.Color color = enums.Color.White) : base(collumn, row, color) { }
 
-        public string Name { get => "Bishop"; }
+        public override string Name { get => "Bishop"; }
 
         public override List<Square> AvailableMove
         {

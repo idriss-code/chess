@@ -15,9 +15,9 @@ namespace chessboard.pieces
             Color = color;
         }
 
-        public virtual List<Square> AvailableMove { get => new(); }
+        public abstract List<Square> AvailableMove { get; }
 
-        public virtual string Name { get => ""; }
+        public abstract string Name { get; }
 
         public string Row { get; private set; }
         public string Collumn { get; private set; }
@@ -159,7 +159,7 @@ namespace chessboard.pieces
             return false;
         }
 
-        public void Move(string c, string r)
+        public virtual void Move(string c, string r)
         {
             if(this.AvailableMove.Contains(new Square(c, r)))
             {

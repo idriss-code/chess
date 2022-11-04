@@ -9,7 +9,7 @@ namespace chessboard.pieces
 
         public Rook(string collumn, string row, enums.Color color = enums.Color.White) : base(collumn, row, color) { }
 
-        public string Name { get => "Rook"; }
+        public override string Name { get => "Rook"; }
 
         public override List<Square> AvailableMove
         {
