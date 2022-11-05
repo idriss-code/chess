@@ -40,7 +40,24 @@ namespace chessboard.pieces
                 GiveEnPassantToOpositPawns();
             }
 
+            if (IsEnPassantMove(c, r))
+            {
+                KillPawnEnPassant(c, r);
+            }
+
             base.Move(c, r);
+        }
+
+        private void KillPawnEnPassant(string c, string r)
+        {
+            IPiece? piece = Chessboard?.GetSquare(c, Row);
+
+            piece?.Kill();
+        }
+
+        private bool IsEnPassantMove(string c, string r)
+        {
+            return EnPassantMove.Contains(new Square(c, r));
         }
 
         private bool IsDoubleMove(string c, string r)
@@ -67,7 +84,7 @@ namespace chessboard.pieces
                 GiveEnPassantToOpositPawn(rowOpositPiece, colOpositPiece1, rowMoveToGive);
             }
 
-            if (colOpositPiece2 <= Chessboard.collumns.Count())
+            if (colOpositPiece2 <= Chessboard.collumns.Count()-1)
             {
                 GiveEnPassantToOpositPawn(rowOpositPiece, colOpositPiece2, rowMoveToGive);
             }
@@ -76,7 +93,7 @@ namespace chessboard.pieces
         private void GiveEnPassantToOpositPawn(int opositRow, int opositColumn, int rowMoveToGive)
         {
             IPiece? piece = Chessboard?.GetSquare(Chessboard.collumns[opositColumn], Chessboard.rows[opositRow]);
-            if (piece is Pawn && piece.Color != Color)
+            if (piece != null && piece is Pawn && piece.Color != Color)
             {
                 ((Pawn)piece).AddEnPassant(Chessboard.collumns[ColIndex], Chessboard.rows[rowMoveToGive]);
             }
