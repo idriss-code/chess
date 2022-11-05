@@ -1,6 +1,5 @@
 ﻿
 using chessboard.exceptions;
-using System.ComponentModel.Design;
 
 namespace chessboard.pieces
 {
@@ -161,15 +160,14 @@ namespace chessboard.pieces
 
         public virtual void Move(string c, string r)
         {
-            if(this.AvailableMove.Contains(new Square(c, r)))
+            if (this.AvailableMove.Contains(new Square(c, r)))
             {
-                var target = Chessboard?.GetPieceOnSquare(c, r);
-                if (target != null)
-                {
-                    target.Kill();
-                }
+                Capture(c, r);
+
                 Row = r;
                 Collumn = c;
+
+                ResetAllEnPassantMove();
             }
             else
             {
@@ -177,7 +175,24 @@ namespace chessboard.pieces
             }
         }
 
-        public void Kill()
+        private void Capture(string c, string r)
+        {
+            var target = Chessboard?.GetPieceOnSquare(c, r);
+            target?.RemoveFromChessBoard();
+        }
+
+        private void ResetAllEnPassantMove()
+        {
+            if (Chessboard == null)
+                throw new Exception("ResetAllEnPassantMove : No Chessboard");
+
+            foreach (Pawn pawn in Chessboard.GetAllPawnOfOneSide(this.Color))
+            {
+                pawn.ResetEnPassantMove();
+            }
+        }
+
+        public void RemoveFromChessBoard()
         {
             Row = "";
             Collumn = "";

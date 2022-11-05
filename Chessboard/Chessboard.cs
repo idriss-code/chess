@@ -69,5 +69,10 @@ namespace chessboard
             pieces.Remove(piece);
             removedPieces.Add(piece);
         }
+
+        public IEnumerable<Pawn> GetAllPawnOfOneSide(Color color)
+        {
+            return pieces.FindAll(piece => piece is Pawn && piece.Color == color).Cast<Pawn>();
+        }
     }
 }

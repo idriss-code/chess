@@ -20,6 +20,6 @@ namespace chessboard.pieces
 
         public void Move(string c, string r);
 
-        public void Kill();
+        public void RemoveFromChessBoard();
     }
 }

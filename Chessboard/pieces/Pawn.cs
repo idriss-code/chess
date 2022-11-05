@@ -1,14 +1,13 @@
 ﻿
 using chessboard.enums;
-using System.Collections.Generic;
 
 namespace chessboard.pieces
 {
     public class Pawn : PieceBase, IPiece
     {
-        public Pawn(enums.Color color = enums.Color.White) : base("", "", color) { }
+        public Pawn(Color color = Color.White) : base("", "", color) { }
 
-        public Pawn(string collumn, string row, enums.Color color = enums.Color.White) : base(collumn, row, color) { }
+        public Pawn(string collumn, string row, Color color = Color.White) : base(collumn, row, color) { }
 
         public override string Name { get => "Pawn"; }
 
@@ -52,7 +51,7 @@ namespace chessboard.pieces
         {
             IPiece? piece = Chessboard?.GetPieceOnSquare(c, Row);
 
-            piece?.Kill();
+            piece?.RemoveFromChessBoard();
         }
 
         private bool IsEnPassantMove(string c, string r)
@@ -71,6 +70,11 @@ namespace chessboard.pieces
         public void AddEnPassant(string c, string r)
         {
             EnPassantMove.Add(new Square(c, r));
+        }
+
+        public void ResetEnPassantMove()
+        {
+            EnPassantMove.Clear();
         }
 
         private void GiveEnPassantToOpositPawns()
