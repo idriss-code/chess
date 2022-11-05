@@ -41,7 +41,7 @@ namespace chessboard.pieces
 
         protected bool IsEmptyOrOposite(int c, int r)
         {
-            IPiece? target = Chessboard?.GetSquare(Chessboard.collumns[c], Chessboard.rows[r]);
+            IPiece? target = Chessboard?.GetPieceOnSquare(Chessboard.collumns[c], Chessboard.rows[r]);
             if (target == null)
                 return true;
             if (target.Color != this.Color)
@@ -51,7 +51,7 @@ namespace chessboard.pieces
 
         protected bool IsOposite(int c, int r)
         {
-            IPiece? target = Chessboard?.GetSquare(Chessboard.collumns[c], Chessboard.rows[r]);
+            IPiece? target = Chessboard?.GetPieceOnSquare(Chessboard.collumns[c], Chessboard.rows[r]);
             if (target == null)
                 return false;
             if (target.Color != this.Color)
@@ -61,7 +61,7 @@ namespace chessboard.pieces
 
         protected bool IsEmpty(int c, int r)
         {
-            IPiece? target = Chessboard?.GetSquare(Chessboard.collumns[c], Chessboard.rows[r]);
+            IPiece? target = Chessboard?.GetPieceOnSquare(Chessboard.collumns[c], Chessboard.rows[r]);
             if (target == null)
                 return true;
             return false;
@@ -163,7 +163,7 @@ namespace chessboard.pieces
         {
             if(this.AvailableMove.Contains(new Square(c, r)))
             {
-                var target = Chessboard?.GetSquare(c, r);
+                var target = Chessboard?.GetPieceOnSquare(c, r);
                 if (target != null)
                 {
                     target.Kill();

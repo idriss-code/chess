@@ -24,64 +24,64 @@ namespace chessboardTest
             var chessboard = new Chessboard();
             chessboard.NewGame();
 
-            var whiteRook1 = chessboard.GetSquare("a", "1");
+            var whiteRook1 = chessboard.GetPieceOnSquare("a", "1");
             Assert.IsTrue(whiteRook1 is Rook);
             Assert.IsTrue(whiteRook1?.Color == Color.White);
-            var whiteKnight1 = chessboard.GetSquare("b", "1");
+            var whiteKnight1 = chessboard.GetPieceOnSquare("b", "1");
             Assert.IsTrue(whiteKnight1 is Knight);
             Assert.IsTrue(whiteKnight1?.Color == Color.White);
-            var whiteBishop1 = chessboard.GetSquare("c", "1");
+            var whiteBishop1 = chessboard.GetPieceOnSquare("c", "1");
             Assert.IsTrue(whiteBishop1 is Bishop);
             Assert.IsTrue(whiteBishop1?.Color == Color.White);
-            var whiteQueen = chessboard.GetSquare("d", "1");
+            var whiteQueen = chessboard.GetPieceOnSquare("d", "1");
             Assert.IsTrue(whiteQueen is Queen);
             Assert.IsTrue(whiteQueen?.Color == Color.White);
-            var whiteKing = chessboard.GetSquare("e", "1");
+            var whiteKing = chessboard.GetPieceOnSquare("e", "1");
             Assert.IsTrue(whiteKing is King);
             Assert.IsTrue(whiteKing?.Color == Color.White);
-            var whiteBishop2 = chessboard.GetSquare("f", "1");
+            var whiteBishop2 = chessboard.GetPieceOnSquare("f", "1");
             Assert.IsTrue(whiteBishop2 is Bishop);
             Assert.IsTrue(whiteBishop2?.Color == Color.White);
-            var whiteKnight2 = chessboard.GetSquare("g", "1");
+            var whiteKnight2 = chessboard.GetPieceOnSquare("g", "1");
             Assert.IsTrue(whiteKnight2 is Knight);
             Assert.IsTrue(whiteKnight2?.Color == Color.White);
-            var whiteRook2 = chessboard.GetSquare("h", "1");
+            var whiteRook2 = chessboard.GetPieceOnSquare("h", "1");
             Assert.IsTrue(whiteRook2 is Rook);
             Assert.IsTrue(whiteRook2?.Color == Color.White);
 
-            var blackRook1 = chessboard.GetSquare("a", "8");
+            var blackRook1 = chessboard.GetPieceOnSquare("a", "8");
             Assert.IsTrue(blackRook1 is Rook);
             Assert.IsTrue(blackRook1?.Color == Color.Black);
-            var blackKnight1 = chessboard.GetSquare("b", "8");
+            var blackKnight1 = chessboard.GetPieceOnSquare("b", "8");
             Assert.IsTrue(blackKnight1 is Knight);
             Assert.IsTrue(blackKnight1?.Color == Color.Black);
-            var blackBishop1 = chessboard.GetSquare("c", "8");
+            var blackBishop1 = chessboard.GetPieceOnSquare("c", "8");
             Assert.IsTrue(blackBishop1 is Bishop);
             Assert.IsTrue(blackBishop1?.Color == Color.Black);
-            var blackQueen = chessboard.GetSquare("d", "8");
+            var blackQueen = chessboard.GetPieceOnSquare("d", "8");
             Assert.IsTrue(blackQueen is Queen);
             Assert.IsTrue(blackQueen?.Color == Color.Black);
-            var blackKing = chessboard.GetSquare("e", "8");
+            var blackKing = chessboard.GetPieceOnSquare("e", "8");
             Assert.IsTrue(blackKing is King);
             Assert.IsTrue(blackKing?.Color == Color.Black);
-            var blackBishop2 = chessboard.GetSquare("f", "8");
+            var blackBishop2 = chessboard.GetPieceOnSquare("f", "8");
             Assert.IsTrue(blackBishop2 is Bishop);
             Assert.IsTrue(blackBishop2?.Color == Color.Black);
-            var blackKnight2 = chessboard.GetSquare("g", "8");
+            var blackKnight2 = chessboard.GetPieceOnSquare("g", "8");
             Assert.IsTrue(blackKnight2 is Knight);
             Assert.IsTrue(blackKnight2?.Color == Color.Black);
-            var blackRook2 = chessboard.GetSquare("h", "8");
+            var blackRook2 = chessboard.GetPieceOnSquare("h", "8");
             Assert.IsTrue(blackRook2 is Rook);
             Assert.IsTrue(blackRook2?.Color == Color.Black);
 
             var cols = new List<string> { "a", "b", "c", "d", "e", "f", "g", "h" };
             foreach (string col in cols)
             {
-                var blackPawn = chessboard.GetSquare(col, "7");
+                var blackPawn = chessboard.GetPieceOnSquare(col, "7");
                 Assert.IsTrue(blackPawn is Pawn);
                 Assert.IsTrue(blackPawn?.Color == Color.Black);
 
-                var whitePawn = chessboard.GetSquare(col, "2");
+                var whitePawn = chessboard.GetPieceOnSquare(col, "2");
                 Assert.IsTrue(whitePawn is Pawn);
                 Assert.IsTrue(whitePawn?.Color == Color.White);
             }
@@ -92,7 +92,7 @@ namespace chessboardTest
         {
             var chessboard = new Chessboard();
             chessboard.AddPiece(new King("a", "1"));
-            var king = chessboard.GetSquare("a", "1");
+            var king = chessboard.GetPieceOnSquare("a", "1");
             Assert.IsTrue(king is King);
         }
 

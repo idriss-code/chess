@@ -50,7 +50,7 @@ namespace chessboard.pieces
 
         private void KillPawnEnPassant(string c, string r)
         {
-            IPiece? piece = Chessboard?.GetSquare(c, Row);
+            IPiece? piece = Chessboard?.GetPieceOnSquare(c, Row);
 
             piece?.Kill();
         }
@@ -92,7 +92,7 @@ namespace chessboard.pieces
 
         private void GiveEnPassantToOpositPawn(int opositRow, int opositColumn, int rowMoveToGive)
         {
-            IPiece? piece = Chessboard?.GetSquare(Chessboard.collumns[opositColumn], Chessboard.rows[opositRow]);
+            IPiece? piece = Chessboard?.GetPieceOnSquare(Chessboard.collumns[opositColumn], Chessboard.rows[opositRow]);
             if (piece != null && piece is Pawn && piece.Color != Color)
             {
                 ((Pawn)piece).AddEnPassant(Chessboard.collumns[ColIndex], Chessboard.rows[rowMoveToGive]);

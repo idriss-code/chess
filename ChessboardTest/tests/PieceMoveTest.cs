@@ -16,12 +16,12 @@ namespace chessboardTest
             var chessboard = new Chessboard();
 
             chessboard.AddPiece(new King("d", "5"));
-            IPiece? piece = chessboard.GetSquare("d", "5");
+            IPiece? piece = chessboard.GetPieceOnSquare("d", "5");
             Assert.IsNotNull(piece);
 
             piece.Move("d", "6");
             piece = null;
-            piece = chessboard.GetSquare("d", "6");
+            piece = chessboard.GetPieceOnSquare("d", "6");
             Assert.IsNotNull(piece);
         }
 
@@ -36,14 +36,14 @@ namespace chessboardTest
                 var chessboard = new Chessboard();
 
                 chessboard.AddPiece(currentPiece);
-                IPiece? piece = chessboard.GetSquare("d", "5");
+                IPiece? piece = chessboard.GetPieceOnSquare("d", "5");
                 Assert.IsNotNull(piece);
 
                 Square s = currentPiece.AvailableMove.First<Square>();
 
                 piece.Move(s.Collumn, s.Row);
                 piece = null;
-                piece = chessboard.GetSquare(s.Collumn, s.Row);
+                piece = chessboard.GetPieceOnSquare(s.Collumn, s.Row);
                 Assert.IsNotNull(piece);
             }
         }
@@ -69,7 +69,7 @@ namespace chessboardTest
 
             king.Move("e", "5");
 
-            Assert.IsTrue(chessboard.GetSquare("e", "5") == king);
+            Assert.IsTrue(chessboard.GetPieceOnSquare("e", "5") == king);
 
             Assert.IsTrue(chessboard.RemovedPieces.Contains(pawn));
         }

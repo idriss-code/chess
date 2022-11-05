@@ -35,7 +35,7 @@ namespace chessboardTest
             blackPawn.Move("g", "5");
             whitePawn.Move("g", "6");
 
-            Assert.IsTrue(chessboard.GetSquare("g", "5") == null);
+            Assert.IsTrue(chessboard.GetPieceOnSquare("g", "5") == null);
             Assert.IsTrue(chessboard.RemovedPieces.Contains(blackPawn));
         }
 
@@ -80,7 +80,7 @@ namespace chessboardTest
             whitePawn.Move("d", "4");
             blackPawn.Move("d", "3");
 
-            Assert.IsTrue(chessboard.GetSquare("d", "4") == null);
+            Assert.IsTrue(chessboard.GetPieceOnSquare("d", "4") == null);
             Assert.IsTrue(chessboard.RemovedPieces.Contains(whitePawn));
         }
 
