@@ -18,6 +18,7 @@ namespace chessboardTest
             chessboard.AddPiece(blackPawn);
             chessboard.AddPiece(whitePawn);
 
+            chessboard.SwitchPlayer();
             blackPawn.Move("g", "5");
             Assert.IsTrue(whitePawn.AvailableMove.Contains(new Square("g", "6")));
         }
@@ -32,6 +33,7 @@ namespace chessboardTest
             chessboard.AddPiece(blackPawn);
             chessboard.AddPiece(whitePawn);
 
+            chessboard.SwitchPlayer();
             blackPawn.Move("g", "5");
             whitePawn.Move("g", "6");
 
@@ -49,6 +51,7 @@ namespace chessboardTest
             chessboard.AddPiece(blackPawn);
             chessboard.AddPiece(whitePawn);
 
+            chessboard.SwitchPlayer();
             blackPawn.Move("a", "5");
             Assert.IsTrue(whitePawn.AvailableMove.Contains(new Square("a", "6")));
         }
@@ -63,6 +66,7 @@ namespace chessboardTest
             chessboard.AddPiece(blackPawn);
             chessboard.AddPiece(whitePawn);
 
+            chessboard.SwitchPlayer();
             blackPawn.Move("h", "5");
             Assert.IsTrue(whitePawn.AvailableMove.Contains(new Square("h", "6")));
         }
@@ -96,6 +100,7 @@ namespace chessboardTest
             chessboard.AddPiece(whitePawn1);
             chessboard.AddPiece(whitePawn2);
 
+            chessboard.SwitchPlayer();
             blackPawn.Move("g", "5");
             Assert.IsTrue(whitePawn1.AvailableMove.Contains(new Square("g", "6")));
 

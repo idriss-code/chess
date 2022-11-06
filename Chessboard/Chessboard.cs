@@ -7,8 +7,16 @@ namespace chessboard
 {
     public class Chessboard
     {
+
+        public Chessboard()
+        {
+            CurrentPlayer = Color.White;
+        }
+
         readonly List<IPiece> pieces = new();
         readonly List<IPiece> removedPieces = new();
+
+        public Color CurrentPlayer { get; private set; }
 
         public ReadOnlyCollection<IPiece> RemovedPieces => removedPieces.AsReadOnly();
 
@@ -30,6 +38,13 @@ namespace chessboard
                 this.AddPiece(new Pawn(col, "2", Color.White));
                 this.AddPiece(new Pawn(col, "7", Color.Black));
             }
+
+            CurrentPlayer = Color.White;
+        }
+
+        public void SwitchPlayer()
+        {
+            CurrentPlayer = CurrentPlayer == Color.White ? Color.Black : Color.White;
         }
 
         private void AddPieces(string row, Color color)

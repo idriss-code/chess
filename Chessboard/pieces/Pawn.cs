@@ -34,6 +34,8 @@ namespace chessboard.pieces
 
         public override void Move(string c, string r)
         {
+            ControlPlayerValidity();
+
             if (IsDoubleMove(c, r))
             {
                 GiveEnPassantToOpositPawns();

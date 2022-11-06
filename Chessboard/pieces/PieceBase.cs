@@ -3,7 +3,7 @@ using chessboard.exceptions;
 
 namespace chessboard.pieces
 {
-    public abstract class PieceBase:IPiece
+    public abstract class PieceBase : IPiece
     {
         protected static readonly int maxMove = 7;
 
@@ -160,6 +160,8 @@ namespace chessboard.pieces
 
         public virtual void Move(string c, string r)
         {
+            ControlPlayerValidity();
+
             if (this.AvailableMove.Contains(new Square(c, r)))
             {
                 Capture(c, r);
@@ -172,6 +174,16 @@ namespace chessboard.pieces
             else
             {
                 throw new ChessBoardException("Invalid move");
+            }
+
+            Chessboard?.SwitchPlayer();
+        }
+
+        protected void ControlPlayerValidity()
+        {
+            if (Chessboard?.CurrentPlayer != Color)
+            {
+                throw new ChessBoardException("Invalid Player");
             }
         }
 
