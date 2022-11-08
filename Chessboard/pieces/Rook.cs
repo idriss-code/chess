@@ -4,10 +4,17 @@ namespace chessboard.pieces
     // TODO special move Clasting
     public class Rook : PieceBase, IPiece
     {
-        public Rook(enums.Color color = enums.Color.White) : base("", "", color) { }
+        public Rook(enums.Color color = enums.Color.White) : base("", "", color)
+        {
+            HasMoved = false;
+        }
 
+        public Rook(string collumn, string row, enums.Color color = enums.Color.White) : base(collumn, row, color)
+        {
+            HasMoved = false;
+        }
 
-        public Rook(string collumn, string row, enums.Color color = enums.Color.White) : base(collumn, row, color) { }
+        public bool HasMoved { get; private set; }
 
         public override string Name { get => "Rook"; }
 
@@ -21,6 +28,12 @@ namespace chessboard.pieces
 
                 return moves;
             }
+        }
+
+        public override void Move(string c, string r)
+        {
+            base.Move(c, r);
+            HasMoved = true;
         }
     }
 }
