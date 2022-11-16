@@ -65,7 +65,7 @@ namespace chessboardTest
         }
 
         [TestMethod]
-        public void CastingAvailableKingSize()
+        public void CastingAvailableKingSide()
         {
             var king = new King("e", "8", Color.Black);
             var rook1 = new Rook("a", "8", Color.Black);
@@ -79,7 +79,7 @@ namespace chessboardTest
         }
 
         [TestMethod]
-        public void CastingAvailableQueeSize()
+        public void CastingAvailableQueeSide()
         {
             var king = new King("e", "8", Color.Black);
             var rook2 = new Rook("h", "8", Color.Black);
@@ -171,6 +171,36 @@ namespace chessboardTest
 
             Assert.IsFalse(king.AvailableMove.Contains(new Square("g", "1")));
             Assert.IsFalse(king.AvailableMove.Contains(new Square("c", "1")));
+        }
+
+        [TestMethod]
+        public void RooKPositionAfterCastingKingSide()
+        {
+            var king = new King("e", "1", Color.White);
+            var rook1 = new Rook("a", "1", Color.White);
+
+            var chessboard = new Chessboard();
+            chessboard.AddPiece(king);
+            chessboard.AddPiece(rook1);
+
+            king.Move("c", "1");
+
+            Assert.IsTrue(rook1.Collumn == "f");
+        }
+
+        [TestMethod]
+        public void QueenPositionAfterCastingKingSide()
+        {
+            var king = new King("e", "1", Color.White);
+            var rook2 = new Rook("h", "1", Color.White);
+
+            var chessboard = new Chessboard();
+            chessboard.AddPiece(king);
+            chessboard.AddPiece(rook2);
+
+            king.Move("g", "1");
+
+            Assert.IsTrue(rook2.Collumn == "d");
         }
     }
 }
