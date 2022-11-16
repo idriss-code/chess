@@ -24,7 +24,7 @@ namespace chessboardTest
             var king = new King("d", "4");
             chessboard.AddPiece(king);
 
-            Assert.IsTrue(king.AvailableMove.Count == 8);
+            Assert.AreEqual(8, king.AvailableMove.Count);
 
             Assert.IsTrue(king.AvailableMove.Contains(new Square("c", "5")));
             Assert.IsTrue(king.AvailableMove.Contains(new Square("d", "5")));
@@ -48,7 +48,7 @@ namespace chessboardTest
             var king = new King("a", "8");
             chessboard.AddPiece(king);
 
-            Assert.IsTrue(king.AvailableMove.Count == 3);
+            Assert.AreEqual(3, king.AvailableMove.Count);
 
             Assert.IsTrue(king.AvailableMove.Contains(new Square("b", "8")));
             Assert.IsTrue(king.AvailableMove.Contains(new Square("b", "7")));
@@ -63,7 +63,7 @@ namespace chessboardTest
             var king = new King("h", "1");
             chessboard.AddPiece(king);
 
-            Assert.IsTrue(king.AvailableMove.Count == 3);
+            Assert.AreEqual(3, king.AvailableMove.Count);
 
             Assert.IsTrue(king.AvailableMove.Contains(new Square("g", "1")));
             Assert.IsTrue(king.AvailableMove.Contains(new Square("g", "2")));
@@ -77,13 +77,29 @@ namespace chessboardTest
 
             var king = new King("a", "1", Color.White);
             chessboard.AddPiece(king);
-            chessboard.AddPiece(new King("a", "2", Color.White));
+            chessboard.AddPiece(new Pawn("a", "2", Color.White));
             chessboard.AddPiece(new King("b", "1", Color.Black));
 
-            Assert.IsTrue(king.AvailableMove.Count == 2);
+            Assert.AreEqual(2, king.AvailableMove.Count);
 
             Assert.IsTrue(king.AvailableMove.Contains(new Square("b", "1")));
             Assert.IsTrue(king.AvailableMove.Contains(new Square("b", "2")));
+        }
+
+        [TestMethod]
+        public void KingMove5()
+        {
+            var chessboard = new Chessboard();
+
+            var king = new King("d", "4", Color.White);
+            chessboard.AddPiece(king);
+            chessboard.AddPiece(new King("a", "5", Color.Black));
+            chessboard.AddPiece(new King("a", "3", Color.Black));
+
+            Assert.AreEqual(2, king.AvailableMove.Count);
+
+            Assert.IsTrue(king.AvailableMove.Contains(new Square("c", "4")));
+            Assert.IsTrue(king.AvailableMove.Contains(new Square("e", "4")));
         }
     }
 }
