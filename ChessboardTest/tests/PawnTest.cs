@@ -24,7 +24,7 @@ namespace chessboardTest
             var pawn = new Pawn("d", "5",Color.White);
             chessboard.AddPiece(pawn);
 
-            Assert.IsTrue(pawn.AvailableMove.Count == 1);
+            Assert.AreEqual(1, pawn.AvailableMove.Count);
             Assert.IsTrue(pawn.AvailableMove.Contains(new Square("d", "6")));
         }
 
@@ -36,7 +36,7 @@ namespace chessboardTest
             var pawn = new Pawn("d", "5",Color.Black);
             chessboard.AddPiece(pawn);
 
-            Assert.IsTrue(pawn.AvailableMove.Count == 1);
+            Assert.AreEqual(1, pawn.AvailableMove.Count);
             Assert.IsTrue(pawn.AvailableMove.Contains(new Square("d", "4")));
         }
 
@@ -62,7 +62,7 @@ namespace chessboardTest
             var pawn = new Pawn("d", "2", Color.White);
             chessboard.AddPiece(pawn);
 
-            Assert.IsTrue(pawn.AvailableMove.Count == 2);
+            Assert.AreEqual(2, pawn.AvailableMove.Count);
             Assert.IsTrue(pawn.AvailableMove.Contains(new Square("d", "3")));
             Assert.IsTrue(pawn.AvailableMove.Contains(new Square("d", "4")));
         }
@@ -75,7 +75,7 @@ namespace chessboardTest
             var pawn = new Pawn("d", "7", Color.Black);
             chessboard.AddPiece(pawn);
 
-            Assert.IsTrue(pawn.AvailableMove.Count == 2);
+            Assert.AreEqual(2, pawn.AvailableMove.Count);
             Assert.IsTrue(pawn.AvailableMove.Contains(new Square("d", "6")));
             Assert.IsTrue(pawn.AvailableMove.Contains(new Square("d", "5")));
         }
@@ -90,7 +90,7 @@ namespace chessboardTest
             chessboard.AddPiece(new Pawn("c", "3", Color.Black));
             chessboard.AddPiece(new Pawn("e", "3", Color.Black));
 
-            Assert.IsTrue(pawn.AvailableMove.Count == 4);
+            Assert.AreEqual(4, pawn.AvailableMove.Count);
             Assert.IsTrue(pawn.AvailableMove.Contains(new Square("c", "3")));
             Assert.IsTrue(pawn.AvailableMove.Contains(new Square("e", "3")));
         }
@@ -105,7 +105,7 @@ namespace chessboardTest
             chessboard.AddPiece(new Pawn("c", "6", Color.White));
             chessboard.AddPiece(new Pawn("e", "6", Color.White));
 
-            Assert.IsTrue(pawn.AvailableMove.Count == 4);
+            Assert.AreEqual(4, pawn.AvailableMove.Count);
             Assert.IsTrue(pawn.AvailableMove.Contains(new Square("c", "6")));
             Assert.IsTrue(pawn.AvailableMove.Contains(new Square("e", "6")));
         }

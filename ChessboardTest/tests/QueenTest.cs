@@ -24,7 +24,7 @@ namespace chessboardTest
             var queen = new Queen("d", "5");
             chessboard.AddPiece(queen);
 
-            Assert.IsTrue(queen.AvailableMove.Count == 14 + 13);
+            Assert.AreEqual(14 + 13, queen.AvailableMove.Count);
 
             Assert.IsTrue(queen.AvailableMove.Contains(new Square("d", "1")));
             Assert.IsTrue(queen.AvailableMove.Contains(new Square("d", "8")));
@@ -105,7 +105,7 @@ namespace chessboardTest
             chessboard.AddPiece(new King("b", "3", Color.Black));
             chessboard.AddPiece(new King("f", "3", Color.Black));
 
-            Assert.IsTrue(queen.AvailableMove.Count == 14 + 8);
+            Assert.AreEqual(14 + 8, queen.AvailableMove.Count);
 
             Assert.IsTrue(queen.AvailableMove.Contains(new Square("c", "6")));
             Assert.IsTrue(queen.AvailableMove.Contains(new Square("c", "4")));
@@ -130,7 +130,7 @@ namespace chessboardTest
             chessboard.AddPiece(new King("b", "3", Color.White));
             chessboard.AddPiece(new King("f", "3", Color.White));
 
-            Assert.IsTrue(queen.AvailableMove.Count == 14 + 4);
+            Assert.AreEqual(14 + 4, queen.AvailableMove.Count);
 
             Assert.IsTrue(queen.AvailableMove.Contains(new Square("c", "6")));
             Assert.IsTrue(queen.AvailableMove.Contains(new Square("c", "4")));

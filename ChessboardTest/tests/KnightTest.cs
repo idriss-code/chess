@@ -24,7 +24,7 @@ namespace chessboardTest
             var knight = new Knight("d","5");
             chessboard.AddPiece(knight);
 
-            Assert.IsTrue(knight.AvailableMove.Count == 8);
+            Assert.AreEqual(8, knight.AvailableMove.Count);
             Assert.IsTrue(knight.AvailableMove.Contains(new Square("c", "7")));
             Assert.IsTrue(knight.AvailableMove.Contains(new Square("e", "7")));
 

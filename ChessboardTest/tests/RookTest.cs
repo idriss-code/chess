@@ -25,7 +25,7 @@ namespace chessboardTest
             var rook = new Rook("d","5");
             chessboard.AddPiece(rook);
 
-            Assert.IsTrue(rook.AvailableMove.Count == 14);
+            Assert.AreEqual(14, rook.AvailableMove.Count);
 
             Assert.IsTrue(rook.AvailableMove.Contains(new Square("d", "1")));
             Assert.IsTrue(rook.AvailableMove.Contains(new Square("d", "8")));
