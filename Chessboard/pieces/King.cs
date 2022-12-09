@@ -23,6 +23,24 @@ namespace chessboard.pieces
 
         public override string Name { get => "King"; }
 
+        public bool CastingQueenSideAvailable
+        {
+            get
+            {
+                string[] side = { "b", "c", "d" };
+                return !HasMoved && IsEmptySide(side) && IsRookReadyCasting("a");
+            }
+        }
+
+        public bool CastingKingSideAvailable
+        {
+            get
+            {
+                string[] side = { "f", "g" };
+                return !HasMoved && IsEmptySide(side) && IsRookReadyCasting("h");
+            }
+        }
+
         public override List<Square> AvailableMove
         {
             get
@@ -40,11 +58,11 @@ namespace chessboard.pieces
                     }
                 }
 
-                if (IsCastingQueenSideAvalable())
+                if (CastingQueenSideAvailable)
                 {
                     moves.Add(new Square("c", startRow));
                 }
-                if (IsCastingKingSideAvalable())
+                if (CastingKingSideAvailable)
                 {
                     moves.Add(new Square("g", startRow));
                 }
@@ -53,23 +71,11 @@ namespace chessboard.pieces
             }
         }
 
-        private bool IsCastingQueenSideAvalable()
-        {
-            string[] side = { "b", "c", "d" };
-            return !HasMoved && IsEmptySide(side) && IsRookReadyCasting("a");
-        }
-
-        private bool IsCastingKingSideAvalable()
-        {
-            string[] side = { "f", "g" };
-            return !HasMoved && IsEmptySide(side) && IsRookReadyCasting("h");
-        }
-
         private bool IsEmptySide(string[] side)
         {
             foreach (string col in side)
             {
-                if(Chessboard?.GetPieceOnSquare(col, startRow) != null)
+                if (Chessboard?.GetPieceOnSquare(col, startRow) != null)
                     return false;
             }
             return true;

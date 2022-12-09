@@ -24,7 +24,7 @@ namespace chessboardTest
             var bishop = new Bishop("d", "5");
             chessboard.AddPiece(bishop);
 
-            Assert.IsTrue(bishop.AvailableMove.Count == 13);
+            Assert.AreEqual(13, bishop.AvailableMove.Count);
 
             Assert.IsTrue(bishop.AvailableMove.Contains(new Square("a", "8")));
             Assert.IsTrue(bishop.AvailableMove.Contains(new Square("g", "8")));
@@ -44,7 +44,7 @@ namespace chessboardTest
             chessboard.AddPiece(new King("b", "3", Color.Black));
             chessboard.AddPiece(new King("f", "3", Color.Black));
 
-            Assert.IsTrue(bishop.AvailableMove.Count == 8);
+            Assert.AreEqual(8, bishop.AvailableMove.Count);
 
             Assert.IsTrue(bishop.AvailableMove.Contains(new Square("c", "6")));
             Assert.IsTrue(bishop.AvailableMove.Contains(new Square("c", "4")));
@@ -69,7 +69,7 @@ namespace chessboardTest
             chessboard.AddPiece(new King("b", "3", Color.White));
             chessboard.AddPiece(new King("f", "3", Color.White));
 
-            Assert.IsTrue(bishop.AvailableMove.Count == 4);
+            Assert.AreEqual(4, bishop.AvailableMove.Count);
 
             Assert.IsTrue(bishop.AvailableMove.Contains(new Square("c", "6")));
             Assert.IsTrue(bishop.AvailableMove.Contains(new Square("c", "4")));
