@@ -78,7 +78,7 @@ namespace chessboardTest
             var king = new King("a", "1", Color.White);
             chessboard.AddPiece(king);
             chessboard.AddPiece(new Pawn("a", "2", Color.White));
-            chessboard.AddPiece(new King("b", "1", Color.Black));
+            chessboard.AddPiece(new Bishop("b", "1", Color.Black));
 
             Assert.AreEqual(2, king.AvailableMove.Count);
 

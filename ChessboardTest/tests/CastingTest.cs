@@ -185,7 +185,7 @@ namespace chessboardTest
 
             king.Move("c", "1");
 
-            Assert.IsTrue(rook1.Collumn == "f");
+            Assert.IsTrue(rook1.Collumn == "d");
         }
 
         [TestMethod]
@@ -200,7 +200,7 @@ namespace chessboardTest
 
             king.Move("g", "1");
 
-            Assert.IsTrue(rook2.Collumn == "d");
+            Assert.IsTrue(rook2.Collumn == "f");
         }
     }
 }
