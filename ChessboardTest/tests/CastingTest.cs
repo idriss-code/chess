@@ -189,7 +189,7 @@ namespace chessboardTest
         }
 
         [TestMethod]
-        public void QueenPositionAfterCastingKingSide()
+        public void RooKPositionAfterCastingQueenSide()
         {
             var king = new King("e", "1", Color.White);
             var rook2 = new Rook("h", "1", Color.White);
