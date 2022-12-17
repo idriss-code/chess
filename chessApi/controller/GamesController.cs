@@ -47,7 +47,7 @@ namespace chessApi.controller
         [HttpPut("{id}")]
         public async Task<IActionResult> PutGame(long id, Game game)
         {
-            if (id != game.Id)
+            if (id != game.GameId)
             {
                 return BadRequest();
             }
@@ -81,7 +81,7 @@ namespace chessApi.controller
             _context.Games.Add(game);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetGame", new { id = game.Id }, game);
+            return CreatedAtAction("GetGame", new { id = game.GameId }, game);
         }
 
         // DELETE: api/Games/5
@@ -102,7 +102,7 @@ namespace chessApi.controller
 
         private bool GameExists(long id)
         {
-            return _context.Games.Any(e => e.Id == id);
+            return _context.Games.Any(e => e.GameId == id);
         }
     }
 }
