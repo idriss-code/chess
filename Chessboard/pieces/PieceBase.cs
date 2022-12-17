@@ -1,5 +1,6 @@
 ﻿
 using chessboard.exceptions;
+using System.Collections.ObjectModel;
 
 namespace chessboard.pieces
 {
@@ -19,7 +20,7 @@ namespace chessboard.pieces
         public abstract string Name { get; }
 
         public string Row { get; private set; }
-        public string Collumn { get; private set; }
+        public string Collumn { get; set; }
 
         public enums.Color Color { get; }
 
@@ -63,6 +64,32 @@ namespace chessboard.pieces
             IPiece? target = Chessboard?.GetPieceOnSquare(Chessboard.collumns[c], Chessboard.rows[r]);
             if (target == null)
                 return true;
+            return false;
+        }
+
+        protected bool IsKingCheckPosition(int c, int r)
+        {
+            string Col = Chessboard.collumns[c];
+            string Row = Chessboard.rows[r];
+
+            ReadOnlyCollection<IPiece> OpositPieces;
+            if (this.Color == enums.Color.White)
+            {
+                OpositPieces = this.Chessboard.BlackPieces;
+            }
+            else
+            {
+                OpositPieces = this.Chessboard.WhitePieces;
+            }
+
+            foreach (IPiece piece in OpositPieces)
+            {
+                if (piece.AvailableMove.Contains(new Square(Col,Row)))
+                {
+                    return true;
+                }
+            }
+
             return false;
         }
 

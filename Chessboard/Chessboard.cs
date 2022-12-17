@@ -20,6 +20,12 @@ namespace chessboard
 
         public ReadOnlyCollection<IPiece> RemovedPieces => removedPieces.AsReadOnly();
 
+        public ReadOnlyCollection<IPiece> Pieces => pieces.AsReadOnly();
+
+        public ReadOnlyCollection<IPiece> BlackPieces => pieces.Where(pieces => pieces.Color == Color.Black).ToList().AsReadOnly();
+
+        public ReadOnlyCollection<IPiece> WhitePieces => pieces.Where(pieces => pieces.Color == Color.White).ToList().AsReadOnly();
+
         public static readonly string[] rows = { "1", "2", "3", "4", "5", "6", "7", "8" };
         public static readonly string[] collumns = { "a", "b", "c", "d", "e", "f", "g", "h" };
 

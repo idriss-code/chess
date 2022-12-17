@@ -51,7 +51,7 @@ namespace chessboard.pieces
                 {
                     for (int c = ColIndex - 1; c < ColIndex + 2; c++)
                     {
-                        if (IsNotOriginSquare(c, r) && IsOnchessBoard(c, r) && IsEmptyOrOposite(c, r))
+                        if (IsNotOriginSquare(c, r) && IsOnchessBoard(c, r) && IsEmptyOrOposite(c, r) && !IsKingCheckPosition(c, r))
                         {
                             moves.Add(new Square(Chessboard.collumns[c], Chessboard.rows[r]));
                         }
@@ -90,6 +90,23 @@ namespace chessboard.pieces
         public override void Move(string c, string r)
         {
             base.Move(c, r);
+
+            if (HasMoved == false)
+            {
+                Square destPos = new Square(c, r);
+
+                if (destPos == new Square("g", startRow))
+                {
+                    Rook? rook = (Rook)Chessboard?.GetPieceOnSquare("h", startRow);
+                    rook?.CastlingMove("f");
+                }
+                else if (destPos == new Square("c", startRow))
+                {
+                    Rook? rook = (Rook)Chessboard?.GetPieceOnSquare("a", startRow);
+                    rook?.CastlingMove("d");
+                }
+            }
+
             HasMoved = true;
         }
     }

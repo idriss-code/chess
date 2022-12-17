@@ -30,6 +30,11 @@ namespace chessboard.pieces
             }
         }
 
+        public void CastlingMove(string col)
+        {
+            Collumn = col;
+        }
+
         public override void Move(string c, string r)
         {
             base.Move(c, r);

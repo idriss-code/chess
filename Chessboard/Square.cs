@@ -19,8 +19,29 @@ namespace chessboard
 
         bool IEquatable<Square>.Equals(Square? other)
         {
-            if (other == null) return false;
+            if (other is null) return false;
             return (this.Row == other.Row && this.Collumn == other.Collumn);
+        }
+
+        public static bool operator ==(Square a, Square b)
+        {
+            return (a.Row == b.Row && a.Collumn == b.Collumn);
+        }
+
+        // If you implement ==, you must implement !=.
+        public static bool operator !=(Square a, Square b)
+        {
+            return !(a == b);
+        }
+
+        // Equals should be consistent with operator ==.
+        public override bool Equals(Object? obj)
+        {
+            Square? good = obj as Square;
+            if (good is null)
+                return false;
+
+            return this == good;
         }
     }
 }
