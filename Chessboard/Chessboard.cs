@@ -95,5 +95,15 @@ namespace chessboard
         {
             return pieces.FindAll(piece => piece is Pawn && piece.Color == color).Cast<Pawn>();
         }
+
+        public int Save()
+        {
+            return 0;
+        }
+
+        public void Load(int id)
+        {
+
+        }
     }
 }
