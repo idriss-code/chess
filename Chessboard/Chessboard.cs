@@ -1,4 +1,5 @@
 ﻿using chessboard.enums;
+using chessboard.interfaces;
 using chessboard.exceptions;
 using chessboard.pieces;
 using System.Collections.ObjectModel;
@@ -95,15 +96,14 @@ namespace chessboard
         {
             return pieces.FindAll(piece => piece is Pawn && piece.Color == color).Cast<Pawn>();
         }
-
-        public int Save()
+        public int Save(IGameStateRepository repository, int? gameId = null)
         {
-            return 0;
+            return repository.SaveGame(this, gameId);
         }
 
-        public void Load(int id)
+        public static Chessboard Load(int id, IGameStateRepository repository)
         {
-
+            return repository.LoadGame(id);
         }
     }
 }

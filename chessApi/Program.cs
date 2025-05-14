@@ -1,7 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using chessApi;
+using ChessApi.Services;
+using chessboard.interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IGameStateRepository, ChessGameRepository>();
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+});
 
 // Add services to the container.
 builder.Services.AddControllers();
